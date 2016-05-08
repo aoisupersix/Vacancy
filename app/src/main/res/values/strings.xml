@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">空席照会</string>
+    <string name="action_settings">設定</string>
+    <string name="action_app">このアプリについて</string>
+    <string name="Change">変更</string>
+    <string name="Shokai">※6時30分-22時30分の間、照会可能です。</string>
+    <string name="Zyosyabi">乗車日:</string>
+    <string name="Hassyazikan">発車時刻:</string>
+    <string name="TrainType">列車タイプ:</string>
+    <string name="DepStaname">出発駅:</string>
+    <string name="StaHint">駅名を入力</string>
+    <string name="StaTitle">駅名を入力してください。</string>
+    <string name="ArrStaname">到着駅:</string>
+    <string name="StartVacancy">照会する</string>
+    <string name="ResultTitle">照会結果</string>
+    <string name="TrainName">列車名</string>
+    <string name="DepTIme">発車時刻</string>
+    <string name="ArrTime">到着時刻</string>
+    <string name="NoData">照会可能な列車がありません。</string>
+    <string name="Reserved_NS">指(禁)</string>
+    <string name="Reserved_S">指(喫)</string>
+    <string name="Green_NS">グ(禁)</string>
+    <string name="Green_S">グ(喫)</string>
+    <string name="Gran_NS">グラン</string>
+</resources>

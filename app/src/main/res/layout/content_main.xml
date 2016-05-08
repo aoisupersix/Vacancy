@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="supersix.aoi.vacancy.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Shokai"
+        android:id="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"/>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="false"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentEnd="true"
+        android:background="#0F0F0F"
+        android:id="@+id/tableLayout">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EEEEEE"
+            android:gravity="center"
+            android:layout_margin="1dp">
+
+            <TextView
+                android:text="@string/Zyosyabi"
+                android:id="@+id/Zyosyabi"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
+
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/DateView"
+                android:layout_gravity="center_vertical|left|right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
+
+            <Button
+                android:text="@string/Change"
+                android:id="@+id/DateChangeButton"
+                android:layout_column="2"
+                android:onClick="changeDate"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#EEEEEE"
+            android:layout_margin="1dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Hassyazikan"
+                android:id="@+id/Hassyazikan"
+                android:layout_gravity="center_vertical"
+                android:singleLine="false"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/DepTimeView"
+                android:layout_gravity="center_vertical|left|right"
+                android:gravity="center" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Change"
+                android:id="@+id/HassyazikanChangeButton"
+                android:layout_gravity="center_vertical|right"
+                android:layout_column="2"
+                android:onClick="changeDepTime" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#EEEEEE"
+            android:layout_margin="1dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/TrainType"
+                android:id="@+id/textView"
+                android:layout_gravity="center_vertical"
+                android:singleLine="false"
+                android:gravity="center" />
+
+            <TextView
+
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/TrainTypeView"
+                android:width="@dimen/DataView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
+
+            <Button
+                android:text="@string/Change"
+                android:id="@+id/TrainTypeChange"
+                android:layout_gravity="center_vertical|right"
+                android:layout_column="2"
+                android:onClick="changeTrainType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#DEDEDE"
+            android:layout_margin="1dp">
+
+            <TextView
+                android:text="@string/DepStaname"
+                android:id="@+id/textView2"
+                android:layout_gravity="center_vertical"
+                android:singleLine="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center" />
+
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/DepStnView"
+                android:layout_gravity="center_vertical|left|right"
+                android:width="@dimen/DataView"
+                android:autoText="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center" />
+
+            <Button
+                android:text="@string/Change"
+                android:id="@+id/DepStaChange"
+                android:layout_gravity="center_vertical|right"
+                android:layout_column="2"
+                android:onClick="showStaDialog"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#EEEEEE"
+            android:layout_margin="1dp">
+
+            <TextView
+                android:text="@string/ArrStaname"
+                android:id="@+id/textView3"
+                android:layout_gravity="center_vertical"
+                android:singleLine="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center" />
+
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/ArrStnView"
+                android:layout_gravity="center_vertical|left|right"
+                android:width="@dimen/DataView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center" />
+
+            <Button
+                android:text="@string/Change"
+                android:id="@+id/button"
+                android:layout_gravity="center_vertical|right"
+                android:layout_column="2"
+                android:onClick="showStaDialog"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tableLayout"
+        android:gravity="center|top">
+
+        <Button
+            android:text="@string/StartVacancy"
+            android:id="@+id/StartVacancyButton"
+            android:onClick="Post"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/TrainTitleView"
+            android:singleLine="false"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:shadowColor="#140303" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000000">
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:text="@string/Reserved_NS">
+            </TextView>
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:text="@string/Reserved_S">
+            </TextView>
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:text="@string/Green_NS">
+            </TextView>
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:text="@string/Green_S">
+            </TextView>
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:text="@string/Gran_NS">
+            </TextView>
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000000">
+            <ImageView
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#FFFFFF"
+                android:src="@mipmap/b_seat_sankaku_l"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/res_ns">
+            </ImageView>
+            <ImageView
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#FFFFFF"
+                android:src="@mipmap/b_seat_maru_l"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/res_s">
+            </ImageView>
+            <ImageView
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#FFFFFF"
+                android:src="@mipmap/b_seat_maru_l"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/gre_ns">
+            </ImageView>
+            <ImageView
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#FFFFFF"
+                android:src="@mipmap/b_seat_fin_l"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/gre_s">
+            </ImageView>
+            <ImageView
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#FFFFFF"
+                android:src="@mipmap/b_seat_maru_l"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/gran">
+            </ImageView>
+
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>
