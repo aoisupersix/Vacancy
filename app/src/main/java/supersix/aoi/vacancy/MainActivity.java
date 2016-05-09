@@ -134,7 +134,16 @@ public class MainActivity extends AppCompatActivity{
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.profile) {
+            //プロファイルダイアログを開く
+            LayoutInflater inflater = this.getLayoutInflater();
+            View profileDialogView = inflater.inflate(R.layout.profile_dialog, null);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setView(profileDialogView);
+
+            final AlertDialog stadialog = builder.show();
+
             return true;
         }else if(id == R.id.about_app){
             Intent intent = new Intent();
