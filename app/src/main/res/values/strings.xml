@@ -2,6 +2,7 @@
     <string name="app_name">空席照会</string>
     <string name="action_settings">設定</string>
     <string name="action_app">このアプリについて</string>
+    <string name="profile">{fa_bars}プロファイル設定</string>
     <string name="Change">変更</string>
     <string name="Shokai">※6時30分-22時30分の間、照会可能です。</string>
     <string name="Zyosyabi">乗車日:</string>
@@ -22,4 +23,15 @@
     <string name="Green_NS">グ(禁)</string>
     <string name="Green_S">グ(喫)</string>
     <string name="Gran_NS">グラン</string>
+    <string name="AboutApp">{fa_info-circle} このアプリについて</string>
+    <array name="bootstrap_dropdown_example_data">
+        <item>First item</item>
+        <item>Second item</item>
+        <item>{dropdown_disabled}Disabled item</item>
+        <item>{dropdown_header}Dropdown header</item>
+        <item>Fourth item</item>
+        <item>Fifth item</item>
+        <item>{dropdown_separator}</item>
+        <item>Separated item</item>
+    </array>
 </resources>

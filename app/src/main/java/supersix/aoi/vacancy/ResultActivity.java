@@ -3,6 +3,7 @@ package supersix.aoi.vacancy;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,10 +17,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapText;
 import com.beardedhen.androidbootstrap.api.view.BootstrapTextView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -35,10 +42,20 @@ public class ResultActivity extends AppCompatActivity {
     private List<Integer> train_green_s = new ArrayList<Integer>();
     private List<Integer> train_gran = new ArrayList<Integer>();
 
+    //列車名
+    private ArrayList<String> ltdexp_list = new ArrayList<String>();
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+        //列車名リスト読み込み
+        try {
+            loadLtdexplist();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
 
         //データ引き継ぎ
         Intent intent = getIntent();
@@ -46,8 +63,8 @@ public class ResultActivity extends AppCompatActivity {
         data = intent.getStringArrayExtra("data");
 
         //入力された情報を表示
-        TextView result = (TextView)findViewById(R.id.ResultDataView);
-        result.setText(data[0] + "年" + data[1] + "月" + data[2] + "日  " + data[3] + ":" + data[4] + "発  " + data[5] + "(" + data[7] + ") → " + data[6] + "(" + data[8] + ")");
+        TextView result = (TextView) findViewById(R.id.ResultDataView);
+        result.setText(data[0] + "/" + data[1] + "/" + data[2] + "/ " + data[3] + ":" + data[4] + "発\n" + data[5] + " → " + data[6]);
 
         //HTMLチェック
         short html_type = checkHTML();
@@ -68,13 +85,30 @@ public class ResultActivity extends AppCompatActivity {
                 searchHTML();
 
                 //リストビュー表示
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+                List<Listitem> list = new ArrayList<Listitem>();
                 for(int i = 0; i < train_name.size(); i++){
-                    adapter.add(train_name.get(i) + "(" + train_deptime.get(i) + "-" + train_arrtime.get(i) + ")");
+                    Listitem item = new Listitem();
+                    item.setText(train_name.get(i) + "(" + train_deptime.get(i) + "-" + train_arrtime.get(i) + ")");
+                    switch(getTrainType(train_name.get(i))){
+                        case "ltdexp":
+                            //特急
+                            item.setImageId(R.mipmap.ltdexp);
+                            break;
+                        default:
+                            //種別該当なし
+                            item.setImageId(R.drawable.common_full_open_on_phone);
+                            break;
+                    }
+                    list.add(item);
                 }
-                ListView list = (ListView)findViewById(R.id.TrainList);
-                list.setAdapter(adapter);
-                list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                ImageArrayAdapter adapter = new ImageArrayAdapter(
+                        this,
+                        R.layout.list_row,
+                        list
+                        );
+                ListView listView = (ListView)findViewById(R.id.TrainList);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                     public void onItemClick(AdapterView<?> parent, View view, int pos, long id){
                         showTrainDialog(pos);
                     }
@@ -84,6 +118,11 @@ public class ResultActivity extends AppCompatActivity {
                 //該当なし
                 DocumentTypeView.setVisibility(View.VISIBLE);
                 DocumentTypeView.setText("該当区間を運転している空席照会可能な列車はありません。");
+                break;
+            case 2:
+                //時間が不正
+                DocumentTypeView.setVisibility(View.VISIBLE);
+                DocumentTypeView.setText("ご希望の乗車日の空席状況は照会できません。");
                 break;
         }
 
@@ -110,7 +149,7 @@ public class ResultActivity extends AppCompatActivity {
         ImageView Green_s = (ImageView)TrainDialogView.findViewById(R.id.gre_s);
         ImageView Gran = (ImageView)TrainDialogView.findViewById(R.id.gran);
 
-        train_title.setText(train_name.get(pos) + " " + data[5] + "(" + train_deptime.get(pos) + ") → " + data[6] + "(" + train_arrtime.get(pos) + ")");
+        train_title.setText(train_name.get(pos) + "\n" + data[5] + "(" + train_deptime.get(pos) + ") → " + data[6] + "(" + train_arrtime.get(pos) + ")");
         setImage(Res_ns,train_reserved_ns.get(pos));
         setImage(Res_s,train_reserved_s.get(pos));
         setImage(Green_ns,train_green_ns.get(pos));
@@ -143,6 +182,7 @@ public class ResultActivity extends AppCompatActivity {
         -1:受付時間外&混雑中
         0:照会結果あり
         1:照会結果なし
+        2:時間が不正
          */
         short DocumentType = 0;
         if(result.indexOf("ただいま、受け付け時間外のため、ご希望の情報の照会はできません。", 0) != -1){
@@ -151,6 +191,9 @@ public class ResultActivity extends AppCompatActivity {
         }else if(result.indexOf("該当区間を運転している空席照会可能な列車はありません。", 0) != -1){
             //列車なし
             DocumentType = 1;
+        }else if(result.indexOf("ご希望の乗車日の空席状況は照会できません。", 0) != -1){
+            //時間が不正
+            DocumentType = 2;
         }
         return DocumentType;
     }
@@ -219,4 +262,41 @@ public class ResultActivity extends AppCompatActivity {
         return state;
     }
 
+    private String getTrainType(String train_name){
+        String type = "";
+        for(int i = 0; i < ltdexp_list.size(); i++){
+            if(train_name.indexOf(ltdexp_list.get(i)) != -1){
+                //特急列車
+                type = "ltdexp";
+            }
+        }
+        return type;
+    }
+
+    //列車名読み込み
+    //特急
+    private void loadLtdexplist() throws IOException {
+        InputStream is = null;
+        BufferedReader br = null;
+
+        try {
+            try {
+                // assetsフォルダ内の sample.txt をオープンする
+                is = this.getAssets().open("LtdExpList.txt");
+                br = new BufferedReader(new InputStreamReader(is));
+
+                // １行ずつ読み込み、改行を付加する
+                String str;
+                while ((str = br.readLine()) != null) {
+                    ltdexp_list.add(str);
+                    Log.d("ahotrain", str);
+                }
+            } finally {
+                if (is != null) is.close();
+                if (br != null) br.close();
+            }
+        } catch (Exception e) {
+            // エラー発生時の処理
+        }
+    }
 }

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -21,252 +22,228 @@
         android:text="@string/Shokai"
         app:bootstrapBrand="success" />
 
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:background="#0F0F0F">
 
-        <TableLayout
-            android:id="@+id/tableLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#0F0F0F">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="1dp"
-                android:background="#FFFFFF"
-                android:gravity="center">
-
-                <com.beardedhen.androidbootstrap.AwesomeTextView
-                    android:id="@+id/Zyosyabi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:text="@string/Zyosyabi"
-                    app:bootstrapBrand="primary" />
-
-                <com.beardedhen.androidbootstrap.AwesomeTextView
-                    android:id="@+id/DateView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:minHeight="70dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    app:bootstrapBrand="regular" />
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/DateChangeButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:gravity="center"
-                    android:onClick="changeDate"
-                    android:text="@string/Change"
-                    android:textSize="20sp"
-                    app:bootstrapBrand="success"
-                    app:buttonMode="regular"
-                    app:roundedCorners="true"
-                    app:showOutline="false"
-                    android:layout_gravity="center|right" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="1dp"
-                android:background="#FFFFFF"
-                android:gravity="center">
-
-                <com.beardedhen.androidbootstrap.AwesomeTextView
-                    android:id="@+id/Hassyazikan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:singleLine="false"
-                    android:text="@string/Hassyazikan"
-                    app:bootstrapBrand="primary" />
-
-                <com.beardedhen.androidbootstrap.AwesomeTextView
-                    android:id="@+id/DepTimeView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:minHeight="70dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    app:bootstrapBrand="regular" />
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/HassyazikanChangeButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center_vertical|right"
-                    android:onClick="changeDepTime"
-                    android:text="@string/Change"
-                    app:bootstrapBrand="success"
-                    app:buttonMode="regular"
-                    app:roundedCorners="true"
-                    app:showOutline="false" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="1dp"
-                android:background="#FFFFFF"
-                android:gravity="center">
-
-                <com.beardedhen.androidbootstrap.AwesomeTextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:singleLine="false"
-                    android:text="@string/TrainType"
-                    app:bootstrapBrand="primary" />
-
-                <com.beardedhen.androidbootstrap.AwesomeTextView
-                    android:id="@+id/TrainTypeView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:width="@dimen/DataView"
-                    android:gravity="center"
-                    android:minHeight="70dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    app:bootstrapBrand="regular" />
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/TrainTypeChange"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center_vertical|right"
-                    android:onClick="changeTrainType"
-                    android:text="@string/Change"
-                    app:bootstrapBrand="success"
-                    app:buttonMode="regular"
-                    app:roundedCorners="true"
-                    app:showOutline="false" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="1dp"
-                android:background="#FFFFFF"
-                android:gravity="center">
-
-                <com.beardedhen.androidbootstrap.AwesomeTextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:singleLine="false"
-                    android:text="@string/DepStaname"
-                    app:bootstrapBrand="primary" />
-
-                <com.beardedhen.androidbootstrap.AwesomeTextView
-                    android:id="@+id/DepStnView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|left|right"
-                    android:width="@dimen/DataView"
-                    android:gravity="center"
-                    android:minHeight="70dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    app:bootstrapBrand="regular" />
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/DepStaChange"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center_vertical|right"
-                    android:onClick="showStaDialog"
-                    android:text="@string/Change"
-                    app:bootstrapBrand="success"
-                    app:buttonMode="regular"
-                    app:roundedCorners="true"
-                    app:showOutline="false" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#FFFFFF"
-                android:gravity="center">
-
-                <com.beardedhen.androidbootstrap.AwesomeTextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:singleLine="false"
-                    android:text="@string/ArrStaname"
-                    app:bootstrapBrand="primary" />
-
-                <com.beardedhen.androidbootstrap.AwesomeTextView
-                    android:id="@+id/ArrStnView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|left|right"
-                    android:width="@dimen/DataView"
-                    android:gravity="center"
-                    android:minHeight="70dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    app:bootstrapBrand="regular" />
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center_vertical|right"
-                    android:onClick="showStaDialog"
-                    android:text="@string/Change"
-                    app:bootstrapBrand="success"
-                    app:buttonMode="regular"
-                    app:roundedCorners="true"
-                    app:showOutline="false" />
-
-            </TableRow>
-
-        </TableLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_alignStart="@+id/linearLayout2"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="49dp"
-        android:orientation="horizontal">
-
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/StartVacancyButton"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="bottom"
-            android:onClick="Post"
-            app:bootstrapBrand="info"
-            app:bootstrapText="@string/StartVacancy"
-            app:fontAwesomeIcon="fa_train" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
 
-    </LinearLayout>
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/Zyosyabi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="@string/Zyosyabi"
+                app:bootstrapBrand="primary" />
 
-</RelativeLayout>
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/DateView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:minHeight="70dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                app:bootstrapBrand="regular" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/DateChangeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_gravity="center|right"
+                android:gravity="center"
+                android:onClick="changeDate"
+                android:text="@string/Change"
+                android:textSize="20sp"
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/Hassyazikan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:singleLine="false"
+                android:text="@string/Hassyazikan"
+                app:bootstrapBrand="primary" />
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/DepTimeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:minHeight="70dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                app:bootstrapBrand="regular" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/HassyazikanChangeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_gravity="center_vertical|right"
+                android:onClick="changeDepTime"
+                android:text="@string/Change"
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:singleLine="false"
+                android:text="@string/TrainType"
+                app:bootstrapBrand="primary" />
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/TrainTypeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="@dimen/DataView"
+                android:gravity="center"
+                android:minHeight="70dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                app:bootstrapBrand="regular" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/TrainTypeChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_gravity="center_vertical|right"
+                android:onClick="changeTrainType"
+                android:text="@string/Change"
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:background="#FFFFFF"
+            android:gravity="center">
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:singleLine="false"
+                android:text="@string/DepStaname"
+                app:bootstrapBrand="primary" />
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/DepStnView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left|right"
+                android:width="@dimen/DataView"
+                android:gravity="center"
+                android:minHeight="70dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                app:bootstrapBrand="regular" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/DepStaChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_gravity="center_vertical|right"
+                android:onClick="showStaDialog"
+                android:text="@string/Change"
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:gravity="center">
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:singleLine="false"
+                android:text="@string/ArrStaname"
+                app:bootstrapBrand="primary" />
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:id="@+id/ArrStnView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left|right"
+                android:width="@dimen/DataView"
+                android:gravity="center"
+                android:minHeight="70dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                app:bootstrapBrand="regular" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_gravity="center_vertical|right"
+                android:onClick="showStaDialog"
+                android:text="@string/Change"
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="false" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/StartVacancyButton"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:onClick="Post"
+        app:bootstrapBrand="info"
+        app:bootstrapText="@string/StartVacancy"
+        app:fontAwesomeIcon="fa_train" />
+
+</LinearLayout>

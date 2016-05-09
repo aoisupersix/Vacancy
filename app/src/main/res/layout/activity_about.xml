@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bootstrapBrand="primary"
+        android:textSize="30sp"
+        android:layout_margin="10dp"
+        app:bootstrapText="@string/AboutApp"
+        android:layout_gravity="center"/>
+
+    <com.beardedhen.androidbootstrap.BootstrapThumbnail
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon"
+        android:layout_gravity="center"/>
+
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bootstrapBrand="info"
+        app:bootstrapText="アプリ名"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:textSize="20dp"
+        android:id="@+id/app_name" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:gravity="center"
+            android:background="#FFFFFF">
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_margin="10dp"
+                app:bootstrapText="{fa_user} 開発者:"/>
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_margin="10dp"
+                app:bootstrapText="aoi"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:gravity="center"
+            android:background="#FFFFFF">
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_margin="10dp"
+                app:bootstrapText="{fa_code-fork} バージョン:"/>
+
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_margin="10dp"
+                app:bootstrapText="0.1"/>
+
+        </TableRow>
+
+    </TableLayout>
+</LinearLayout>

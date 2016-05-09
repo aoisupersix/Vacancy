@@ -38,8 +38,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.android.gms.appindexing.Action;
@@ -49,9 +51,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class MainActivity extends AppCompatActivity{
 
     private GoogleApiClient client;
-    //現在時刻
-    private int C_YEAR;
-    private int C_MONTH;
     //照会時刻
     private String Year;
     private String Month;
@@ -62,8 +61,8 @@ public class MainActivity extends AppCompatActivity{
     final CharSequence[] Char_traintype = {"のぞみ,さくら,みずほ,さくら,つばめ", "こだま", "はやぶさ,はやて,やまびこ,なすの,つばさ,こまち", "とき,たにがわ,かがやき,はくたか,あさま,つるぎ", "在来線列車"};
     private int traintype = 1;
     //駅名
-    private String dep_stn = "";
-    private String arr_stn = "";
+    private String dep_stn;
+    private String arr_stn;
     private String dep_push = "";
     private String arr_push = "";
     //プッシュコードMap
@@ -80,8 +79,6 @@ public class MainActivity extends AppCompatActivity{
 
         //日時、時刻を取得
         Calendar _calendar = Calendar.getInstance();
-        this.C_YEAR = _calendar.get(Calendar.YEAR);         //年を取得
-        this.C_MONTH = _calendar.get(Calendar.MONTH) + 1;       //月を取得
         this.Year = String.valueOf(_calendar.get(Calendar.YEAR));         //年を取得
         this.Month = String.valueOf(_calendar.get(Calendar.MONTH) + 1);       //月を取得
         this.Day = String.valueOf(_calendar.get(Calendar.DATE));         //日を取得
@@ -89,13 +86,13 @@ public class MainActivity extends AppCompatActivity{
         this.Minute = String.valueOf(_calendar.get(Calendar.MINUTE));    //分を取得
 
         //デバッグ用設定
-        Month = "5";
-        Day = "10";
-        Hour = "7";
-        Minute = "0";
-        traintype = 5;
-        setDepSta("新宿", "4115");
-        setArrSta("松本", "5400");
+//        Month = "5";
+//        Day = "10";
+//        Hour = "7";
+//        Minute = "0";
+//        traintype = 5;
+//        setDepSta("新宿", "4115");
+//        setArrSta("松本", "5400");
 
         //自動設定
         setDate();
@@ -112,8 +109,9 @@ public class MainActivity extends AppCompatActivity{
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                       // .setAction("Action", null).show();
+                changeDate(view);
             }
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -138,6 +136,11 @@ public class MainActivity extends AppCompatActivity{
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if(id == R.id.about_app){
+            Intent intent = new Intent();
+            intent.setClassName("supersix.aoi.vacancy", "supersix.aoi.vacancy.AboutActivity");
+            startActivity(intent);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -151,17 +154,52 @@ public class MainActivity extends AppCompatActivity{
                     @Override
                     public void onDateSet(DatePicker view, int year, int month,
                                           int day) {
-                        //設定した日時が1ヶ月以内ならOK! TODO
-                        //if(C_MONTH == 12){
-                        //    //12月
-                        //if(year == (C_YEAR + 1) && month == 1 && day <= ){
 
-                        //    }
-                        //}
-                        Year = String.valueOf(year);
-                        Month = String.valueOf(month + 1);
-                        Day = String.valueOf(day);
-                        setDate();
+                        //設定した日時が1ヶ月以内ならOK!
+                        Calendar current = Calendar.getInstance();
+                        Log.d("day", String.valueOf(current.get(Calendar.MONTH)));
+
+                        //12月
+                        if(current.get(Calendar.MONTH) == 11){
+                            if(year == (current.get(Calendar.YEAR) + 1) && (month + 1) == 1 && day <= current.get(Calendar.DAY_OF_MONTH)){
+                                Year = String.valueOf(year);
+                                Month = String.valueOf(month + 1);
+                                Day = String.valueOf(day);
+                                setDate();
+                            }else{
+                                //TODO エラーメッセージ
+                            }
+                        }else{
+                            //12月以外
+                            if(year == current.get(Calendar.YEAR) && month < (current.get(Calendar.MONTH) + 2) && month >= current.get(Calendar.MONTH)){
+                                if(month == current.get(Calendar.MONTH)){
+                                    Year = String.valueOf(year);
+                                    Month = String.valueOf(month + 1);
+                                    Day = String.valueOf(day);
+                                    setDate();
+                                }else if(day <= current.get(Calendar.DAY_OF_MONTH)){
+                                    if(day == current.get(Calendar.DAY_OF_MONTH)){
+                                        if(current.get(Calendar.HOUR_OF_DAY) >= 10){
+                                            Year = String.valueOf(year);
+                                            Month = String.valueOf(month + 1);
+                                            Day = String.valueOf(day);
+                                            setDate();
+                                        }else{
+                                            //TODO エラーメッセージ
+                                        }
+                                    }else{
+                                        Year = String.valueOf(year);
+                                        Month = String.valueOf(month + 1);
+                                        Day = String.valueOf(day);
+                                        setDate();
+                                    }
+                                }else{
+                                    //TODO エラーメッセージ
+                                }
+                            }else{
+                                //TODO エラーメッセージ
+                            }
+                        }
                     }
                 },
                 _calendar.get(Calendar.YEAR),
@@ -413,12 +451,14 @@ public class MainActivity extends AppCompatActivity{
         startActivity(intent);
     }
     public void Post(View v) {
-        String REQUEST_URL = "http://www1.jr.cyberstation.ne.jp/csws/Vacancy.do?script=0&month=" + Month + "&day=" + Day + "&hour=" + Hour + "&minute=" + Minute + "&train=" + traintype + "&dep_stn=" + dep_stn + "&arr_stn=" + arr_stn + "&dep_stnpb=" + dep_push + "&arr_stnpb=" + arr_push;
-        Log.d("aho", REQUEST_URL);
-        try {
-            new GetVacancy(this).execute(new URL(REQUEST_URL));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+        if(Year != null && Month != null && Day != null && Hour != null && Day != null && dep_stn != null && arr_stn != null) {
+            String REQUEST_URL = "http://www1.jr.cyberstation.ne.jp/csws/Vacancy.do?script=0&month=" + Month + "&day=" + Day + "&hour=" + Hour + "&minute=" + Minute + "&train=" + traintype + "&dep_stn=" + dep_stn + "&arr_stn=" + arr_stn + "&dep_stnpb=" + dep_push + "&arr_stnpb=" + arr_push;
+            Log.d("aho", REQUEST_URL);
+            try {
+                new GetVacancy(this).execute(new URL(REQUEST_URL));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
