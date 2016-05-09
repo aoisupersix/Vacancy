@@ -12,7 +12,8 @@
     tools:context="supersix.aoi.vacancy.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+    <com.beardedhen.androidbootstrap.AwesomeTextView
+        app:bootstrapBrand="success"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Shokai"
@@ -30,51 +31,57 @@
         android:layout_alignParentRight="false"
         android:layout_marginTop="30dp"
         android:layout_alignParentEnd="true"
-        android:background="#0F0F0F"
         android:id="@+id/tableLayout">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#EEEEEE"
             android:gravity="center"
-            android:layout_margin="1dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
-            <TextView
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                app:bootstrapBrand="primary"
                 android:text="@string/Zyosyabi"
                 android:id="@+id/Zyosyabi"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center" />
 
-            <TextView
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                app:bootstrapBrand="regular"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/DateView"
-                android:layout_gravity="center_vertical|left|right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center" />
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:text="@string/Change"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical|right"
                 android:id="@+id/DateChangeButton"
                 android:layout_column="2"
-                android:onClick="changeDate"
-                android:layout_gravity="right"
                 android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true"
+                android:onClick="changeDate"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:background="#EEEEEE"
-            android:layout_margin="1dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
-            <TextView
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                app:bootstrapBrand="primary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Hassyazikan"
@@ -83,32 +90,37 @@
                 android:singleLine="false"
                 android:gravity="center" />
 
-            <TextView
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                app:bootstrapBrand="regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/DepTimeView"
-                android:layout_gravity="center_vertical|left|right"
                 android:gravity="center" />
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Change"
                 android:id="@+id/HassyazikanChangeButton"
                 android:layout_gravity="center_vertical|right"
                 android:layout_column="2"
-                android:onClick="changeDepTime" />
+                android:onClick="changeDepTime"
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:background="#EEEEEE"
-            android:layout_margin="1dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
-            <TextView
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                app:bootstrapBrand="primary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/TrainType"
@@ -117,8 +129,8 @@
                 android:singleLine="false"
                 android:gravity="center" />
 
-            <TextView
-
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                app:bootstrapBrand="regular"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/TrainTypeView"
                 android:width="@dimen/DataView"
@@ -126,24 +138,29 @@
                 android:layout_height="wrap_content"
                 android:gravity="center" />
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:text="@string/Change"
                 android:id="@+id/TrainTypeChange"
                 android:layout_gravity="center_vertical|right"
                 android:layout_column="2"
                 android:onClick="changeTrainType"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:background="#DEDEDE"
-            android:layout_margin="1dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
-            <TextView
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                app:bootstrapBrand="primary"
                 android:text="@string/DepStaname"
                 android:id="@+id/textView2"
                 android:layout_gravity="center_vertical"
@@ -152,7 +169,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
-            <TextView
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                app:bootstrapBrand="regular"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/DepStnView"
                 android:layout_gravity="center_vertical|left|right"
@@ -162,24 +180,29 @@
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:text="@string/Change"
                 android:id="@+id/DepStaChange"
                 android:layout_gravity="center_vertical|right"
                 android:layout_column="2"
                 android:onClick="showStaDialog"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:background="#EEEEEE"
-            android:layout_margin="1dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
 
-            <TextView
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                app:bootstrapBrand="primary"
                 android:text="@string/ArrStaname"
                 android:id="@+id/textView3"
                 android:layout_gravity="center_vertical"
@@ -188,7 +211,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
-            <TextView
+            <com.beardedhen.androidbootstrap.AwesomeTextView
+                app:bootstrapBrand="regular"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/ArrStnView"
                 android:layout_gravity="center_vertical|left|right"
@@ -197,14 +221,18 @@
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:text="@string/Change"
                 android:id="@+id/button"
                 android:layout_gravity="center_vertical|right"
                 android:layout_column="2"
                 android:onClick="showStaDialog"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                app:bootstrapBrand="success"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                app:roundedCorners="true" />
 
         </TableRow>
 
@@ -215,14 +243,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tableLayout"
-        android:gravity="center|top">
+        android:gravity="center|top"
+        android:layout_marginTop="20dp">
 
-        <Button
-            android:text="@string/StartVacancy"
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            app:bootstrapText="@string/StartVacancy"
             android:id="@+id/StartVacancyButton"
             android:onClick="Post"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="100dp"
+            app:fontAwesomeIcon="fa_train"
+            app:bootstrapBrand="info" />
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -11,8 +11,8 @@
     <string name="StaHint">駅名を入力</string>
     <string name="StaTitle">駅名を入力してください。</string>
     <string name="ArrStaname">到着駅:</string>
-    <string name="StartVacancy">照会する</string>
-    <string name="ResultTitle">照会結果</string>
+    <string name="StartVacancy">{fa_train}　照会する</string>
+    <string name="ResultTitle">{fa_flag_checkered}照会結果</string>
     <string name="TrainName">列車名</string>
     <string name="DepTIme">発車時刻</string>
     <string name="ArrTime">到着時刻</string>

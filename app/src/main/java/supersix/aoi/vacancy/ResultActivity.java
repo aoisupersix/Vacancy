@@ -15,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.api.view.BootstrapTextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,21 +49,44 @@ public class ResultActivity extends AppCompatActivity {
         TextView result = (TextView)findViewById(R.id.ResultDataView);
         result.setText(data[0] + "年" + data[1] + "月" + data[2] + "日  " + data[3] + ":" + data[4] + "発  " + data[5] + "(" + data[7] + ") → " + data[6] + "(" + data[8] + ")");
 
-        //HTML解析
-        searchHTML();
+        //HTMLチェック
+        short html_type = checkHTML();
+        Log.d("aho", "html_type =" + html_type);
 
-        //リストビュー表示
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
-        for(int i = 0; i < train_name.size(); i++){
-            adapter.add(train_name.get(i) + "(" + train_deptime.get(i) + "-" + train_arrtime.get(i) + ")");
+        //結果に応じて表示
+        TextView DocumentTypeView = (TextView) findViewById(R.id.DocumentTypeView);
+        switch(html_type){
+            case -1:
+                //受付時間外
+                DocumentTypeView.setVisibility(View.VISIBLE);
+                DocumentTypeView.setText("ただいま、受け付け時間外のため、ご希望の情報の照会はできません。");
+                break;
+            case 0:
+                //照会結果表示
+                DocumentTypeView.setVisibility(View.GONE);
+                //HTML解析
+                searchHTML();
+
+                //リストビュー表示
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+                for(int i = 0; i < train_name.size(); i++){
+                    adapter.add(train_name.get(i) + "(" + train_deptime.get(i) + "-" + train_arrtime.get(i) + ")");
+                }
+                ListView list = (ListView)findViewById(R.id.TrainList);
+                list.setAdapter(adapter);
+                list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                    public void onItemClick(AdapterView<?> parent, View view, int pos, long id){
+                        showTrainDialog(pos);
+                    }
+                });
+                break;
+            case 1:
+                //該当なし
+                DocumentTypeView.setVisibility(View.VISIBLE);
+                DocumentTypeView.setText("該当区間を運転している空席照会可能な列車はありません。");
+                break;
         }
-        ListView list = (ListView)findViewById(R.id.TrainList);
-        list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            public void onItemClick(AdapterView<?> parent, View view, int pos, long id){
-                showTrainDialog(pos);
-            }
-        });
+
     }
     private void showTrainDialog(int pos){
         //リストビュークリック
@@ -111,7 +137,23 @@ public class ResultActivity extends AppCompatActivity {
                 break;
         }
     }
-
+    private short checkHTML(){
+        /*
+        DocumentType:
+        -1:受付時間外&混雑中
+        0:照会結果あり
+        1:照会結果なし
+         */
+        short DocumentType = 0;
+        if(result.indexOf("ただいま、受け付け時間外のため、ご希望の情報の照会はできません。", 0) != -1){
+            //受付時間外
+            DocumentType = -1;
+        }else if(result.indexOf("該当区間を運転している空席照会可能な列車はありません。", 0) != -1){
+            //列車なし
+            DocumentType = 1;
+        }
+        return DocumentType;
+    }
     private void searchHTML(){
         int position = 0;
         int train_end_position = 0;
