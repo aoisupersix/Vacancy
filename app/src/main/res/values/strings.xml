@@ -2,7 +2,7 @@
     <string name="app_name">空席照会</string>
     <string name="action_settings">設定</string>
     <string name="action_app">このアプリについて</string>
-    <string name="profile">{fa_bars}プロファイル設定</string>
+    <string name="profile">プロファイル</string>
     <string name="Change">変更</string>
     <string name="Shokai">※6時30分-22時30分の間、照会可能です。</string>
     <string name="Zyosyabi">乗車日:</string>
@@ -24,6 +24,8 @@
     <string name="Green_S">グ(喫)</string>
     <string name="Gran_NS">グラン</string>
     <string name="AboutApp">{fa_info-circle} このアプリについて</string>
+    <string name="profile_title">{fa_flag-o} プロファイル</string>
+    <string name="profile_description">プロファイルを利用することで、よく利用する内容を自動で設定させることができます。</string>
     <array name="bootstrap_dropdown_example_data">
         <item>First item</item>
         <item>Second item</item>
