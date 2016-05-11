@@ -18,8 +18,8 @@
     <com.beardedhen.androidbootstrap.BootstrapThumbnail
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/icon"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:src="@mipmap/vacancy" />
 
     <com.beardedhen.androidbootstrap.AwesomeTextView
         android:layout_width="wrap_content"

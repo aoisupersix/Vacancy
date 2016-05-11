@@ -98,7 +98,7 @@ public class ResultActivity extends AppCompatActivity {
                             item.setImageId(R.mipmap.ltdexp);
                             break;
                         case "superexp":
-                            item.setImageId(R.mipmap.ltdexp);
+                            item.setImageId(R.mipmap.superexpress);
                             break;
                         default:
                             //種別該当なし
