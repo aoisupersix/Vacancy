@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -65,6 +66,12 @@ public class MainActivity extends AppCompatActivity{
     private String arr_stn;
     private String dep_push = "";
     private String arr_push = "";
+    //新幹線の駅名
+    private ArrayList<String> tokai_stalist = new ArrayList<String>();
+    private ArrayList<String> group2_stalist = new ArrayList<String>();
+    private ArrayList<String> east_stalist = new ArrayList<String>();
+    private ArrayList<String> nagano_stalist = new ArrayList<String>();
+
     //プッシュコードMap
     private Map<String, String> pushcode = new HashMap<>();
     //HTML
@@ -98,6 +105,12 @@ public class MainActivity extends AppCompatActivity{
         setDate();
         setDepTime();
         setTrainType();
+
+        //駅リスト読み込み
+        tokai_stalist = setSuperexpSta("TokaiStaList.txt");
+        group2_stalist = setSuperexpSta("Group2StaList.txt");
+        east_stalist = setSuperexpSta("EastStaList.txt");
+        nagano_stalist = setSuperexpSta("NaganoStaList.txt");
 
         try {
             readPushcode();
@@ -253,82 +266,126 @@ public class MainActivity extends AppCompatActivity{
                 .show();
     }
     public void showStaDialog(View v){
-        LayoutInflater inflater = this.getLayoutInflater();
-        View staDialogView = inflater.inflate(R.layout.sta_dialog, null);
         final int type = v.getId();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setView(staDialogView)
-                .setPositiveButton("決定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which){
+        if(traintype == 5) {
+            //在来線の場合、駅名を入力させる
+            LayoutInflater inflater = this.getLayoutInflater();
+            View staDialogView = inflater.inflate(R.layout.sta_dialog, null);
 
-                    }
-                })
-                .setNegativeButton("キャンセル", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setView(staDialogView)
+                    .setPositiveButton("決定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                });
-        final AlertDialog stadialog = builder.show();
+                        }
+                    })
+                    .setNegativeButton("キャンセル", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
 
-        //ダイアログ内の駅名入力
-        final EditText sta_name = (EditText) staDialogView.findViewById(R.id.InputStaname);
-        final ListView sta_list = (ListView) staDialogView.findViewById(R.id.StaListView);
-        //駅名とプッシュコードのリスト
-        final List<String> sta = new ArrayList<String>();
-        final List<String> push = new ArrayList<String>();
-        sta_name.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        }
+                    });
+            final AlertDialog stadialog = builder.show();
 
-            }
+            //ダイアログ内の駅名入力
+            final EditText sta_name = (EditText) staDialogView.findViewById(R.id.InputStaname);
+            final ListView sta_list = (ListView) staDialogView.findViewById(R.id.StaListView);
+            //駅名とプッシュコードのリスト
+            final List<String> sta = new ArrayList<String>();
+            final List<String> push = new ArrayList<String>();
+            sta_name.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                //駅名を探す
-                String text = sta_name.getText().toString();
-
-                //リスト削除
-                Removelist(sta_list);
-                sta.clear();
-                push.clear();
-
-                for(String key : pushcode.keySet()){
-                    if(key.equals(text)){
-                        //完全一致
-                        //TODO　今は同じ処理
-                        sta.add(key);
-                        push.add(pushcode.get(key));
-                    }else if(key.startsWith(text)) {
-                        //前方一致
-                        sta.add(key);
-                        push.add(pushcode.get(key));
-                    }
                 }
-                //リスト追加
-                Addlist(sta_list,sta);
-            }
-        });
-        sta_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                if(type == R.id.DepStaChange){
-                    //出発駅の場合
-                    setDepSta(sta.get(pos),push.get(pos));
-                }else{
-                    //到着駅の場合
-                    setArrSta(sta.get(pos),push.get(pos));
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
                 }
-                stadialog.dismiss();
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    //駅名を探す
+                    String text = sta_name.getText().toString();
+
+                    //リスト削除
+                    Removelist(sta_list);
+                    sta.clear();
+                    push.clear();
+
+                    for (String key : pushcode.keySet()) {
+                        if (key.equals(text)) {
+                            //完全一致
+                            //TODO　今は同じ処理
+                            sta.add(key);
+                            push.add(pushcode.get(key));
+                        } else if (key.startsWith(text)) {
+                            //前方一致
+                            sta.add(key);
+                            push.add(pushcode.get(key));
+                        }
+                    }
+                    //リスト追加
+                    Addlist(sta_list, sta);
+                }
+            });
+            sta_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                    if (type == R.id.DepStaChange) {
+                        //出発駅の場合
+                        setDepSta(sta.get(pos), push.get(pos));
+                    } else {
+                        //到着駅の場合
+                        setArrSta(sta.get(pos), push.get(pos));
+                    }
+                    stadialog.dismiss();
+                }
+            });
+        }else{
+            //新幹線の場合、駅名は選択する。
+
+            final String[] items;
+
+            switch(traintype){
+                case 1:
+                    items = enterStalist(tokai_stalist);
+                    break;
+                case 2:
+                    items = enterStalist(group2_stalist);
+                    break;
+                case 3:
+                    items = enterStalist(east_stalist);
+                    break;
+                case 4:
+                    items = enterStalist(nagano_stalist);
+                    break;
+                default:
+                    //必要ないけどエラーが出るのでとりあえず代入しておく
+                    items = enterStalist(tokai_stalist);
             }
-        });
+            AlertDialog.Builder listDlg = new AlertDialog.Builder(this);
+            listDlg.setTitle("駅名を選択してください");
+            listDlg.setItems(
+                    items,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (type == R.id.DepStaChange) {
+                                //出発駅の場合
+                                setDepSta(items[which], pushcode.get(items[which]));
+                            } else {
+                                //到着駅の場合
+                                setArrSta(items[which], pushcode.get(items[which]));
+                            }
+                        }
+                    });
+
+            // 表示
+            listDlg.create().show();
+        }
     }
     @Override
     public void onStart() {
@@ -418,6 +475,18 @@ public class MainActivity extends AppCompatActivity{
         DepTimeView.setText(Hour + ":" + Minute);
     }
     private void setTrainType(){
+        //新幹線の場合、駅名は選ぶ
+        if(traintype == 5){
+            BootstrapButton DepStaChange = (BootstrapButton) findViewById(R.id.DepStaChange);
+            DepStaChange.setText("入力");
+            BootstrapButton ArrStaChange = (BootstrapButton) findViewById(R.id.ArrStaChange);
+            ArrStaChange.setText("入力");
+        }else{
+            BootstrapButton DepStaChange = (BootstrapButton) findViewById(R.id.DepStaChange);
+            DepStaChange.setText("選択");
+            BootstrapButton ArrStaChange = (BootstrapButton) findViewById(R.id.ArrStaChange);
+            ArrStaChange.setText("選択");
+        }
         TextView TrainTypeView = (TextView)findViewById(R.id.TrainTypeView);
         TrainTypeView.setText(Char_traintype[traintype - 1]);
     }
@@ -469,6 +538,43 @@ public class MainActivity extends AppCompatActivity{
                 e.printStackTrace();
             }
         }
+    }
+    //ファイルを読み込み、listに代入する
+    private ArrayList<String> setSuperexpSta(String file_name){
+        ArrayList<String> list = new ArrayList<String>();
+        InputStream is = null;
+        BufferedReader br = null;
+
+        try {
+            try {
+
+                is = this.getAssets().open(file_name);
+                br = new BufferedReader(new InputStreamReader(is));
+
+                // １行ずつ読み込む
+                String str;
+                while ((str = br.readLine()) != null) {
+                    list.add(str);
+                    Log.d("superexp_train", str);
+                }
+            } finally {
+                if (is != null) is.close();
+                if (br != null) br.close();
+            }
+        } catch (Exception e) {
+            // エラー発生時の処理
+            Log.d("aho", "LoadTrainName FILED!");
+        }
+        return list;
+    }
+    //新幹線の駅名リストを配列に代入
+    private String[] enterStalist(ArrayList<String> list){
+        String[] result = new String[list.size()];
+        for(int i = 0; i < list.size(); i++){
+            result[i] = list.get(i);
+        }
+
+        return result;
     }
 }
 

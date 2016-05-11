@@ -185,7 +185,7 @@
                 android:layout_column="2"
                 android:layout_gravity="center_vertical|right"
                 android:onClick="showStaDialog"
-                android:text="@string/Change"
+                android:text="入力"
                 app:bootstrapBrand="success"
                 app:buttonMode="regular"
                 app:roundedCorners="true"
@@ -220,13 +220,13 @@
                 app:bootstrapBrand="regular" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/button"
+                android:id="@+id/ArrStaChange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_gravity="center_vertical|right"
                 android:onClick="showStaDialog"
-                android:text="@string/Change"
+                android:text="入力"
                 app:bootstrapBrand="success"
                 app:buttonMode="regular"
                 app:roundedCorners="true"
