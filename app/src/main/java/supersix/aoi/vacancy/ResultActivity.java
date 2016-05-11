@@ -130,6 +130,10 @@ public class ResultActivity extends AppCompatActivity {
                 DocumentTypeView.setVisibility(View.VISIBLE);
                 DocumentTypeView.setText("ご希望の乗車日の空席状況は照会できません。");
                 break;
+            case 3:
+                //該当なし2
+                DocumentTypeView.setVisibility(View.VISIBLE);
+                DocumentTypeView.setText("ご希望の情報はお取り扱いできません。");
         }
 
     }
@@ -189,6 +193,7 @@ public class ResultActivity extends AppCompatActivity {
         0:照会結果あり
         1:照会結果なし
         2:時間が不正
+        3:列車なし
          */
         short DocumentType = 0;
         if(result.indexOf("ただいま、受け付け時間外のため、ご希望の情報の照会はできません。", 0) != -1){
@@ -200,6 +205,9 @@ public class ResultActivity extends AppCompatActivity {
         }else if(result.indexOf("ご希望の乗車日の空席状況は照会できません。", 0) != -1){
             //時間が不正
             DocumentType = 2;
+        }else if(result.indexOf("ご希望の情報はお取り扱いできません。") != -1){
+            //該当列車なし？
+            DocumentType = 3;
         }
         return DocumentType;
     }
@@ -358,18 +366,5 @@ public class ResultActivity extends AppCompatActivity {
     //余白を削除し、全角数字を半角に変換する(列車名用）
     private String toSmall(String str){
         return Normalizer.normalize(str, Normalizer.Form.NFKC).trim();
-
-//        if(str == null){
-//            throw new IllegalArgumentException();
-//        }
-//
-//        StringBuffer sb = new StringBuffer(str);
-//        for(int i = 0; i < str.length(); i++){
-//            char c = str.charAt(i);
-//            if('０' <= c && c <= '９'){
-//                sb.setCharAt(i, (char)(c - '０' + '0'));
-//            }
-//        }
-//        return sb.toString().trim();
     }
 }

@@ -368,7 +368,11 @@ public class MainActivity extends AppCompatActivity{
                     items = enterStalist(tokai_stalist);
             }
             AlertDialog.Builder listDlg = new AlertDialog.Builder(this);
-            listDlg.setTitle("駅名を選択してください");
+            if(type == R.id.DepStaChange){
+                listDlg.setTitle("出発駅を選択してください。");
+            }else{
+                listDlg.setTitle("到着駅を選択してください。");
+            }
             listDlg.setItems(
                     items,
                     new DialogInterface.OnClickListener() {
