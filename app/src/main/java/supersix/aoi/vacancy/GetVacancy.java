@@ -59,7 +59,7 @@ public class GetVacancy extends AsyncTask<URL, Void, String> {
             final int status = con.getResponseCode();
             Log.d("aho", String.valueOf(status));
             if (status == HttpURLConnection.HTTP_OK) {
-                Log.d("aho", "通信成功");
+                Log.d("connect", "通信成功");
                 // 通信に成功した
                 // テキストを取得する
                 final InputStream in;
@@ -69,14 +69,14 @@ public class GetVacancy extends AsyncTask<URL, Void, String> {
                     in = con.getInputStream();
                 }
                 //final String encoding = con.getContentEncoding();
-                Log.d("aho", String.valueOf(status));
+                Log.d("connect", String.valueOf(status));
                 final InputStreamReader inReader = new InputStreamReader(in, "SJIS");
                 final BufferedReader bufReader = new BufferedReader(inReader);
                 String line = null;
                 // 1行ずつテキストを読み込む
                 while((line = bufReader.readLine()) != null) {
                     result.append(line);
-                    Log.d("aho", line);
+                    Log.d("connect", line);
                     ReturnData += line;
                 }
                 bufReader.close();
