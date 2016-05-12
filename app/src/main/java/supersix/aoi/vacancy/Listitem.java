@@ -3,6 +3,7 @@ package supersix.aoi.vacancy;
 public class Listitem {
     private int imageId;
     private String text;
+    private String title;
 
     public int getImageId() {
         return imageId;
@@ -15,5 +16,11 @@ public class Listitem {
     }
     public void setText(String text) {
         this.text = text;
+    }
+    public void setTitle(String title){
+        this.title = title;
+    }
+    public String getTitle(){
+        return title;
     }
 }

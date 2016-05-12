@@ -91,7 +91,8 @@ public class ResultActivity extends AppCompatActivity {
                 List<Listitem> list = new ArrayList<Listitem>();
                 for(int i = 0; i < train_name.size(); i++){
                     Listitem item = new Listitem();
-                    item.setText(train_name.get(i) + "(" + train_deptime.get(i) + "-" + train_arrtime.get(i) + ")");
+                    item.setText(train_name.get(i));
+                    item.setTitle(data[5] + "(" + train_deptime.get(i) + ") → " + data[6] + "(" + train_arrtime.get(i) + ")");
                     switch(getTrainType(train_name.get(i))){
                         case "ltdexp":
                             //特急

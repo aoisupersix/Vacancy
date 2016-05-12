@@ -47,4 +47,107 @@
 
     </LinearLayout>
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/reserved_image"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                android:src="@mipmap/reserved"
+                android:layout_span="2"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/green_image"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                android:src="@mipmap/green"
+                android:layout_span="2"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/granclass_image"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                android:src="@mipmap/granclass" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/reserved_ns_image"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                android:src="@mipmap/nonsmoking"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/reserved_s_image"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                android:src="@mipmap/smoking"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/green_ns_image"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                android:src="@mipmap/nonsmoking"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/green_s_image"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                android:src="@mipmap/smoking"/>
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/granclass_ns_image"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true"
+                android:src="@mipmap/nonsmoking"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/result_reserved_ns"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true" />
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/result_reserved_s"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true" />
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/result_green_ns"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true" />
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/result_green_s"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true" />
+
+            <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                android:id="@+id/result_granclass_ns"
+                app:bootstrapBrand="regular"
+                app:roundedCorners="true" />
+
+        </TableRow>
+
+    </TableLayout>
+
 </LinearLayout>
