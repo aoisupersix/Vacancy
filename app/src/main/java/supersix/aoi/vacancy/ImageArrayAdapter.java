@@ -59,6 +59,18 @@ public class ImageArrayAdapter extends ArrayAdapter<Listitem> {
         BootstrapThumbnail appInfoImage = (BootstrapThumbnail) view.findViewById(R.id.listrow_ImageView);
         appInfoImage.setImageResource(item.getImageId());
 
+        //空席情報をセット
+        BootstrapThumbnail res_ns = (BootstrapThumbnail)view.findViewById(R.id.result_reserved_ns);
+        BootstrapThumbnail res_s = (BootstrapThumbnail)view.findViewById(R.id.result_reserved_s);
+        BootstrapThumbnail gre_ns = (BootstrapThumbnail)view.findViewById(R.id.result_green_ns);
+        BootstrapThumbnail gre_s = (BootstrapThumbnail)view.findViewById(R.id.result_green_s);
+        BootstrapThumbnail grn_ns = (BootstrapThumbnail)view.findViewById(R.id.result_granclass_ns);
+        res_ns.setImageResource(item.getResult(0));
+        res_s.setImageResource(item.getResult(1));
+        gre_ns.setImageResource(item.getResult(2));
+        gre_s.setImageResource(item.getResult(3));
+        grn_ns.setImageResource(item.getResult(4));
+
         //色を変える
         LinearLayout bg = (LinearLayout)view.findViewById(R.id.bg);
 

@@ -106,6 +106,13 @@ public class ResultActivity extends AppCompatActivity {
                             item.setImageId(R.drawable.common_full_open_on_phone);
                             break;
                     }
+                    //空席情報
+                    item.setResult(setImage(train_reserved_ns.get(i)), 0);
+                    item.setResult(setImage(train_reserved_s.get(i)), 1);
+                    item.setResult(setImage(train_green_ns.get(i)), 2);
+                    item.setResult(setImage(train_green_s.get(i)), 3);
+                    item.setResult(setImage(train_gran.get(i)), 4);
+
                     list.add(item);
                 }
                 ImageArrayAdapter adapter = new ImageArrayAdapter(
@@ -186,6 +193,29 @@ public class ResultActivity extends AppCompatActivity {
                 v.setImageResource(R.mipmap.b_seat_maru_l);
                 break;
         }
+    }
+    private int setImage(int type){
+        int imageid;
+        switch(type){
+            case -1:
+                imageid = R.mipmap.nashi;
+                break;
+            case 0:
+                imageid = R.mipmap.nashi;
+                break;
+            case 1:
+                imageid = R.mipmap.batsu;
+                break;
+            case 2:
+                imageid = R.mipmap.sankaku;
+                break;
+            case 3:
+                imageid = R.mipmap.maru;
+                break;
+            default:
+                imageid = R.mipmap.nashi;
+        }
+        return imageid;
     }
     private short checkHTML(){
         /*
