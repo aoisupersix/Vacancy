@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity{
     final CharSequence[] Char_traintype = {"のぞみ,さくら,みずほ,さくら,つばめ", "こだま", "はやぶさ,はやて,やまびこ,なすの,つばさ,こまち", "とき,たにがわ,かがやき,はくたか,あさま,つるぎ", "在来線列車"};
     private int traintype = 1;
     //駅名
-    private String dep_stn;
-    private String arr_stn;
+    private String dep_stn = "";
+    private String arr_stn = "";
     private String dep_push = "";
     private String arr_push = "";
     //新幹線の駅名
@@ -124,7 +124,10 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View view) {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                        // .setAction("Action", null).show();
-                changeDate(view);
+                String b_dep_stn = dep_stn;
+                String b_dep_push = dep_push;
+                setDepSta(arr_stn, arr_push);
+                setArrSta(b_dep_stn, b_dep_push);
             }
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -533,7 +536,7 @@ public class MainActivity extends AppCompatActivity{
         startActivity(intent);
     }
     public void Post(View v) {
-        if(Year != null && Month != null && Day != null && Hour != null && Day != null && dep_stn != null && arr_stn != null) {
+        if(Year != null && Month != null && Day != null && Hour != null && Day != null && dep_stn != "" && arr_stn != "") {
             String REQUEST_URL = "http://www1.jr.cyberstation.ne.jp/csws/Vacancy.do?script=0&month=" + Month + "&day=" + Day + "&hour=" + Hour + "&minute=" + Minute + "&train=" + traintype + "&dep_stn=" + dep_stn + "&arr_stn=" + arr_stn + "&dep_stnpb=" + dep_push + "&arr_stnpb=" + arr_push;
             Log.d("aho", REQUEST_URL);
             try {
