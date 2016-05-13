@@ -124,27 +124,32 @@
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
                 android:id="@+id/result_reserved_ns"
                 app:bootstrapBrand="regular"
-                app:roundedCorners="true" />
+                app:roundedCorners="true"
+                android:src="@mipmap/sankaku" />
 
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
                 android:id="@+id/result_reserved_s"
                 app:bootstrapBrand="regular"
-                app:roundedCorners="true" />
+                app:roundedCorners="true"
+                android:src="@mipmap/maru" />
 
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
                 android:id="@+id/result_green_ns"
                 app:bootstrapBrand="regular"
-                app:roundedCorners="true" />
+                app:roundedCorners="true"
+                android:src="@mipmap/batsu" />
 
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
                 android:id="@+id/result_green_s"
                 app:bootstrapBrand="regular"
-                app:roundedCorners="true" />
+                app:roundedCorners="true"
+                android:src="@mipmap/nashi" />
 
             <com.beardedhen.androidbootstrap.BootstrapThumbnail
                 android:id="@+id/result_granclass_ns"
                 app:bootstrapBrand="regular"
-                app:roundedCorners="true" />
+                app:roundedCorners="true"
+                android:src="@mipmap/batsu" />
 
         </TableRow>
 
