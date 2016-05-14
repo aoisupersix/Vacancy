@@ -398,4 +398,14 @@ public class ResultActivity extends AppCompatActivity {
     private String toSmall(String str){
         return Normalizer.normalize(str, Normalizer.Form.NFKC).trim();
     }
+    public void showHanre(View v){
+        //凡例ダイアログを開く
+        LayoutInflater inflater = this.getLayoutInflater();
+        View HanreDialogView = inflater.inflate(R.layout.hanre_dialog, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(HanreDialogView);
+
+        final AlertDialog hanredialog = builder.show();
+    }
 }

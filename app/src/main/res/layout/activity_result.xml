@@ -52,7 +52,8 @@
                 android:layout_margin="10dp"
                 android:layout_gravity="right"
                 app:bootstrapText="{fa_info} 凡例"
-                app:bootstrapBrand="success" />
+                app:bootstrapBrand="success"
+                android:onClick="showHanre" />
 
         </LinearLayout>
 
