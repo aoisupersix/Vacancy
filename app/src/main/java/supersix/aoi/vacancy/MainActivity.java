@@ -498,13 +498,13 @@ public class MainActivity extends AppCompatActivity{
         TrainTypeView.setText(Char_traintype[traintype - 1]);
     }
     public void setDepSta(String name, String code){
-        this.dep_stn = name;
+        this.dep_stn = delStaExcess(name);
         this.dep_push = code;
         TextView DepStnView = (TextView)findViewById(R.id.DepStnView);
         DepStnView.setText(name);
     }
     public void setArrSta(String name, String code){
-        this.arr_stn = name;
+        this.arr_stn = delStaExcess(name);
         this.arr_push = code;
         TextView ArrStnView = (TextView)findViewById(R.id.ArrStnView);
         ArrStnView.setText(name);
@@ -582,6 +582,16 @@ public class MainActivity extends AppCompatActivity{
         }
 
         return result;
+    }
+    //駅名の()を削除する
+    private String delStaExcess(String str){
+        String str_after = str;
+        if(str.indexOf("(") != -1){
+            int index_front = str.indexOf("(");
+            int index_back = str.indexOf(")", index_front);
+            str_after = str.substring(0,index_front) + str.substring(index_back,str.length() - 1);
+        }
+        return str_after;
     }
 }
 
