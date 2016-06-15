@@ -87,19 +87,19 @@ public class MainActivity extends AppCompatActivity{
         //日時、時刻を取得
         Calendar _calendar = Calendar.getInstance();
         this.Year = String.valueOf(_calendar.get(Calendar.YEAR));         //年を取得
-        this.Month = String.valueOf(_calendar.get(Calendar.MONTH) + 1);       //月を取得
+        this.Month = String.valueOf(_calendar.get(Calendar.MONTH) + 2);       //月を取得
         this.Day = String.valueOf(_calendar.get(Calendar.DATE));         //日を取得
         this.Hour = String.valueOf(_calendar.get(Calendar.HOUR_OF_DAY));         //時を取得
         this.Minute = String.valueOf(_calendar.get(Calendar.MINUTE));    //分を取得
 
         //デバッグ用設定
-//        Month = "5";
-//        Day = "10";
-//        Hour = "7";
-//        Minute = "0";
-//        traintype = 5;
-//        setDepSta("新宿", "4115");
-//        setArrSta("松本", "5400");
+        //Month = "5";
+        //Day = "10";
+        Hour = "21";
+        Minute = "0";
+        traintype = 5;
+        setDepSta("高松", "7000");
+        setArrSta("東京", "4000");
 
         //自動設定
         setDate();
